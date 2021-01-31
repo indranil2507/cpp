@@ -1,9 +1,8 @@
-//number pattern
-/*  1 
-   1 2 
-  1 2 3 
- 1 2 3 4 
-1 2 3 4 5   */
+//zigzag
+/*     
+    *       *       *       * 
+  *   *   *   *   *   *   *   
+*       *       *       *           */
 #include <iostream>
 using namespace std;
 int main(){
@@ -11,19 +10,17 @@ int main(){
     int n;
     cin>>n;
 
-    for(int i=1;i<=n;i++){
-        int j;
-         for(j=1;j<=n-i;j++){
-            cout<<" "<<" ";       
+    for(int i=1;i<=3;i++){
+        
+         for(int j=1;j<=n;j++){
+           if(((i+j)%4==0)  || (i==2 && j%4==0)) {
+               cout<<"* ";
+           }  
+           else{
+               cout<<"  ";
+           }   
         }
-        int k=i;
-        for(;j<=n;j++){
-            cout<<k--<<" ";
-        }
-        k=2;
-        for(;j<=n+i-1;j++){
-            cout<<k++<<" ";
-        }
+       
         cout<<endl;
 
     }
