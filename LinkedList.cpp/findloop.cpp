@@ -38,6 +38,24 @@ int detectLoop(node *&head)
     }
     return 0;
 }
+void removeCycle(node *&head)
+{
+    node *slow = head;
+    node *fast = head;
+    do
+    {
+        slow = slow->next;
+        fast = fast->next->next;
+    } while (slow != fast);
+
+    fast = head;
+    while (fast->next != slow->next)
+    {
+        slow = slow->next;
+        fast = fast->next;
+    }
+    slow->next = NULL;
+}
 void display(node *&head)
 {
     node *temp = head;
@@ -60,7 +78,9 @@ int main()
     insertAtHead(head, 32);
     head->next->next->next->next->next = head;
 
-    cout << detectLoop(head);
+    cout << detectLoop(head) << endl;
+    removeCycle(head);
+    cout << detectLoop(head) << endl;
 
-    // display(head);
+    display(head);
 }
